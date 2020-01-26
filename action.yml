@@ -1,0 +1,18 @@
+name: 'Docker Terraform'
+description: 'Run a terraform action using a docker image'
+inputs:
+  action:  # id of input
+    description: 'Action to run'
+    required: true
+    default: init
+  working-dir:
+    description: 'Directory to perform actions in'
+    required: false
+    deafult: ''
+outputs: {}
+runs:
+  using: 'docker'
+  image: 'docker://klumhru/terraform:latest'
+  args:
+    - ${{ inputs.action }}
+    - ${{ inputs.working-dir }}
